@@ -1,14 +1,8 @@
 from pynput import mouse, keyboard
 import time
-import platform
-import os
-import subprocess
-
-# Import platform-specific libraries for Windows
-if platform.system() == "Windows":
-    from ctypes import cast, POINTER
-    from comtypes import CLSCTX_ALL
-    from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
+from ctypes import cast, POINTER
+from comtypes import CLSCTX_ALL
+from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 # Variables to track the state
 middle_button_pressed = False
@@ -32,48 +26,40 @@ developer_mode = False  # Default to user mode
 # Define actions for each gesture
 def volume_up():
     print("Volume Up Commanded")
-    if platform.system() == "Windows":
-        devices = AudioUtilities.GetSpeakers()
-        interface = devices.Activate(
-            IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
-        volume = cast(interface, POINTER(IAudioEndpointVolume))
-        current_volume = volume.GetMasterVolumeLevelScalar()
-        volume.SetMasterVolumeLevelScalar(min(current_volume + 0.1, 1.0), None)
-    elif platform.system() == "Darwin":  # macOS
-        os.system("osascript -e 'set volume output volume (output volume of (get volume settings) + 10)'")
+    devices = AudioUtilities.GetSpeakers()
+    interface = devices.Activate(
+        IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+    volume = cast(interface, POINTER(IAudioEndpointVolume))
+    current_volume = volume.GetMasterVolumeLevelScalar()
+    volume.SetMasterVolumeLevelScalar(min(current_volume + 0.1, 1.0), None)
 
 def volume_down():
     print("Volume Down Commanded")
-    if platform.system() == "Windows":
-        devices = AudioUtilities.GetSpeakers()
-        interface = devices.Activate(
-            IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
-        volume = cast(interface, POINTER(IAudioEndpointVolume))
-        current_volume = volume.GetMasterVolumeLevelScalar()
-        volume.SetMasterVolumeLevelScalar(max(current_volume - 0.1, 0.0), None)
-    elif platform.system() == "Darwin":  # macOS
-        os.system("osascript -e 'set volume output volume (output volume of (get volume settings) - 10)'")
+    devices = AudioUtilities.GetSpeakers()
+    interface = devices.Activate(
+        IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+    volume = cast(interface, POINTER(IAudioEndpointVolume))
+    current_volume = volume.GetMasterVolumeLevelScalar()
+    volume.SetMasterVolumeLevelScalar(max(current_volume - 0.1, 0.0), None)
 
 def swipe_left():
     print("Three Finger Swipe Left Commanded")
-    if platform.system() == "Darwin":  # macOS
-        subprocess.run(['osascript', '-e', 'tell application "System Events" to key code 123 using {control down}'], capture_output=True)
-    elif platform.system() == "Windows":
-        print("Swipe Left - Implement with third-party tool")
+    # Windows implementation can be added here
+    # For example, you could simulate Windows + Ctrl + Left Arrow
+    print("Swipe Left - Windows Desktop Switch")
 
 def swipe_right():
     print("Three Finger Swipe Right Commanded")
-    if platform.system() == "Darwin":  # macOS
-        subprocess.run(['osascript', '-e', 'tell application "System Events" to key code 124 using {control down}'], capture_output=True)
-    elif platform.system() == "Windows":
-        print("Swipe Right - Implement with third-party tool")
+    # Windows implementation can be added here
+    # For example, you could simulate Windows + Ctrl + Right Arrow
+    print("Swipe Right - Windows Desktop Switch")
+
 gesture_actions = {
     "Up": volume_up,
     "Down": volume_down,
     "Left": swipe_left,
     "Right": swipe_right
 }
-
 def execute_action(action):
     global last_action, action_count, action_start_time
 
@@ -195,11 +181,11 @@ def toggle_developer_mode():
     print(f"Developer mode: {'ON' if developer_mode else 'OFF'}")
 
 # Set up the mouse listener
-mouse_listener = mouse.Listener(on_move=on_move, on_click=on_clic
+mouse_listener = mouse.Listener(on_move=on_move, on_click=on_click)
 mouse_listener.start()
 
 # Set up the keyboard listener
-with keyboard.Listener(on_press=on_press, on_release=on_release) keyboard_listener:
+with keyboard.Listener(on_press=on_press, on_release=on_release) as keyboard_listener:
     keyboard_listener.join()
 
 # Stop the mouse listener when the keyboard listener stops
