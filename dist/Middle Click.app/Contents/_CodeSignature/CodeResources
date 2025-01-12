@@ -14,7 +14,7 @@
 		</data>
 		<key>Resources/gesture_control_macOS.py</key>
 		<data>
-		zBemijg4bPDVzAm3pnmn+I6rtD4=
+		AkcQIj2vhhd/n/3Sf1MZXDp2mMI=
 		</data>
 		<key>Resources/icon.icns</key>
 		<data>
@@ -398,7 +398,7 @@
 		</data>
 		<key>Resources/lib/python39.zip</key>
 		<data>
-		vo/w0h5SuetcZkJL+wKPXhWmV8o=
+		tflxfbH2Kw96BUYLNS5vZ2PJ4QY=
 		</data>
 		<key>Resources/openssl.ca/cert.pem</key>
 		<data>
@@ -406,7 +406,7 @@
 		</data>
 		<key>Resources/site.pyc</key>
 		<data>
-		gL/JZ7SuD/mH/rIOrpM/yFEEJjc=
+		jvVkZj3P6PgYz/gg/SrSNtwXx20=
 		</data>
 		<key>Resources/zlib.cpython-39-darwin.so</key>
 		<data>
@@ -459,11 +459,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zBemijg4bPDVzAm3pnmn+I6rtD4=
+			AkcQIj2vhhd/n/3Sf1MZXDp2mMI=
 			</data>
 			<key>hash2</key>
 			<data>
-			sQECGWUjFbDsDtZDIt4Re6q+Jr+7ni46vRBZOSwcgcA=
+			4md1A9FgK/V3ri3QzIiejoLz8t1KeDFJ1FKeH642vX0=
 			</data>
 		</dict>
 		<key>Resources/icon.icns</key>
@@ -1520,11 +1520,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vo/w0h5SuetcZkJL+wKPXhWmV8o=
+			tflxfbH2Kw96BUYLNS5vZ2PJ4QY=
 			</data>
 			<key>hash2</key>
 			<data>
-			f/nNJGreknZ8B9ro8w0mZ0skYikMCGZHge7u3Lc1PEY=
+			ZdAGs0d2hiUlIOxW/4yJasrfZ+Y1+DD+I/OSbcqZdJg=
 			</data>
 		</dict>
 		<key>Resources/openssl.ca/cert.pem</key>
@@ -1542,11 +1542,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gL/JZ7SuD/mH/rIOrpM/yFEEJjc=
+			jvVkZj3P6PgYz/gg/SrSNtwXx20=
 			</data>
 			<key>hash2</key>
 			<data>
-			dImlt81A4O8gyflrG0t8UllC5cDC/VE2OmXUuiM2vpQ=
+			1SUAGFmroqGmxo74Ab0qbKSmcj+lpNvU4j5il+ubUEs=
 			</data>
 		</dict>
 		<key>Resources/zlib.cpython-39-darwin.so</key>

@@ -1,5 +1,8 @@
 import sys
 import os
+import subprocess
+import tkinter as tk
+from tkinter import messagebox
 
 # Redirect stdout and stderr to a log file in the user's home directory
 log_file_path = os.path.join(os.path.expanduser('~/middleclicksquared/Logs'), 'gesture_control_log.txt')
@@ -170,11 +173,50 @@ print("Middle Click starting...")
 print("Developer mode:", "OFF" if not developer_mode else "ON")
 print("Listening for input...")
 
+def check_accessibility_permissions():
+    try:
+        # Attempt to perform a simple action that requires accessibility permissions
+        subprocess.run(['osascript', '-e', 'tell application "System Events" to key code 0'], check=True)
+        print("Accessibility permissions are granted.")
+    except subprocess.CalledProcessError:
+        print("Accessibility permissions are not granted. Please enable them in System Preferences.")
+        return False
+    return True
+
+def check_input_monitoring_permissions():
+    try:
+        # Attempt to perform a simple action that requires input monitoring permissions
+        subprocess.run(['osascript', '-e', 'tell application "System Events" to key code 0'], check=True)
+        print("Input monitoring permissions are granted.")
+    except subprocess.CalledProcessError:
+        print("Input monitoring permissions are not granted. Please enable them in System Preferences.")
+        return False
+    return True
+
+def open_system_preferences():
+    subprocess.run(['open', 'x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility'])
+
+def show_permission_instructions():
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+    messagebox.showinfo(
+        "Permissions Required",
+        "To use this app, please grant Accessibility and Input Monitoring permissions in System Preferences."
+    )
+    open_system_preferences()
+
 # Also add a startup message in your main execution block
 if __name__ == "__main__":
+    if not check_accessibility_permissions():
+        print("Please grant  accessibility permissions in System Preferences and restart the application.")
+        exit(1)
+    elif not check_input_monitoring_permissions():
+        print("Please grant input monitoring permissions in System Preferences and restart the application.")
+        exit(1)
+    #show_permission_instructions()
     print("Initializing Middle Click...")
     try:
-        # Your existing listener setup code
+        # Your existing listener setup codea
         with mouse.Listener(on_click=on_click, on_move=on_move) as mouse_listener, \
              keyboard.Listener(on_press=on_press, on_release=on_release) as keyboard_listener:
             print("Middle Click is now running!")
