@@ -1,3 +1,12 @@
+import sys
+import os
+
+# Redirect stdout and stderr to a log file in the user's home directory
+log_file_path = os.path.join(os.path.expanduser('~/middleclicksquared/Logs'), 'gesture_control_log.txt')
+log_file = open(log_file_path, 'w', buffering=1)  # Line-buffered
+sys.stdout = log_file
+sys.stderr = log_file
+
 from pynput import mouse, keyboard
 import time
 import subprocess
@@ -68,32 +77,23 @@ def execute_action(action):
 
 def on_move(x, y):
     global middle_button_pressed, start_position, gesture_executed
-    if middle_button_pressed and not gesture_executed:
+    if middle_button_pressed:
         if start_position is None:
             start_position = (x, y)
         else:
             dx = x - start_position[0]
-            dy = y - start_position[1]
-            distance_threshold = 50  # Minimum distance to recognize a gesture
+            volume_change = dx / 5  # Adjust sensitivity as needed
+            current_volume = get_current_volume()
+            new_volume = max(0, min(100, current_volume + volume_change))
+            set_volume(new_volume)
+            start_position = (x, y)
 
-            if abs(dx) > distance_threshold or abs(dy) > distance_threshold:
-                if abs(dx) > abs(dy):
-                    if dx > 0:
-                        gesture = "Right"
-                    else:
-                        gesture = "Left"
-                else:
-                    if dy > 0:
-                        gesture = "Down"
-                    else:
-                        gesture = "Up"
-                
-                # Execute the action for the detected gesture
-                execute_action(gesture)
-                gesture_executed = True  # Mark gesture as executed
-                
-                # Reset start position to avoid repeated triggers
-                start_position = (x, y)
+def get_current_volume():
+    result = subprocess.run(['osascript', '-e', 'output volume of (get volume settings)'], capture_output=True, text=True)
+    return int(result.stdout.strip())
+
+def set_volume(volume):
+    subprocess.run(['osascript', '-e', f'set volume output volume {volume}'], capture_output=True)
 
 def on_click(x, y, button, pressed):
     global middle_button_pressed, start_position, gesture_executed
@@ -166,18 +166,18 @@ def toggle_developer_mode():
     print(f"Developer mode: {'ON' if developer_mode else 'OFF'}")
 
 # At the start of your main script, after imports
-print("Gesture Control starting...")
+print("Middle Click starting...")
 print("Developer mode:", "OFF" if not developer_mode else "ON")
 print("Listening for input...")
 
 # Also add a startup message in your main execution block
 if __name__ == "__main__":
-    print("Initializing Gesture Control...")
+    print("Initializing Middle Click...")
     try:
         # Your existing listener setup code
         with mouse.Listener(on_click=on_click, on_move=on_move) as mouse_listener, \
              keyboard.Listener(on_press=on_press, on_release=on_release) as keyboard_listener:
-            print("Gesture Control is now running!")
+            print("Middle Click is now running!")
             print("Press Tab to toggle developer mode")
             mouse_listener.join()
             keyboard_listener.join()

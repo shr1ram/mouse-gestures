@@ -1,3 +1,12 @@
+import sys
+import os
+
+# Redirect stdout and stderr to a log file in the user's home directory
+log_file_path = os.path.join(os.path.expanduser('~/middleclicksquared/Logs'), 'gesture_control_log.txt')
+log_file = open(log_file_path, 'w', buffering=1)  # Line-buffered
+sys.stdout = log_file
+sys.stderr = log_file
+
 from pynput import mouse, keyboard
 import time
 import subprocess
@@ -157,18 +166,18 @@ def toggle_developer_mode():
     print(f"Developer mode: {'ON' if developer_mode else 'OFF'}")
 
 # At the start of your main script, after imports
-print("Gesture Control starting...")
+print("Middle Click starting...")
 print("Developer mode:", "OFF" if not developer_mode else "ON")
 print("Listening for input...")
 
 # Also add a startup message in your main execution block
 if __name__ == "__main__":
-    print("Initializing Gesture Control...")
+    print("Initializing Middle Click...")
     try:
         # Your existing listener setup code
         with mouse.Listener(on_click=on_click, on_move=on_move) as mouse_listener, \
              keyboard.Listener(on_press=on_press, on_release=on_release) as keyboard_listener:
-            print("Gesture Control is now running!")
+            print("Middle Click is now running!")
             print("Press Tab to toggle developer mode")
             mouse_listener.join()
             keyboard_listener.join()

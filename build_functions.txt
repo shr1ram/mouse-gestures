@@ -25,6 +25,7 @@ sips -s format png -z 1024 1024 icon.png --out icon.iconset/icon_512x512@2x.png
 # Create the icns file
 iconutil -c icns icon.iconset
 
+/----------------------------
 
 # Run the app
 ./dist/Gesture\ Control.app/Contents/MacOS/Gesture\ Control

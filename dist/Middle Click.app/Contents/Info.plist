@@ -5,17 +5,17 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
-	<string>Gesture Control</string>
+	<string>Middle Click</string>
 	<key>CFBundleExecutable</key>
-	<string>Gesture Control</string>
+	<string>Middle Click</string>
 	<key>CFBundleIconFile</key>
 	<string>icon.icns</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourname.gesturecontrol</string>
+	<string>com.yourname.middleclick</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Gesture Control</string>
+	<string>Middle Click</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

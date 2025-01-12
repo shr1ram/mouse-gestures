@@ -14,11 +14,11 @@
 		</data>
 		<key>Resources/gesture_control_macOS.py</key>
 		<data>
-		lV6TcYINjqud2oWJtlGXWN+DPWc=
+		zBemijg4bPDVzAm3pnmn+I6rtD4=
 		</data>
 		<key>Resources/icon.icns</key>
 		<data>
-		l6CHKUCTdj7ou31kRdLJQ0vkths=
+		Qb1aN1LT4LODn9d546gHztSdKN4=
 		</data>
 		<key>Resources/include/Headers/pyconfig.h</key>
 		<data>
@@ -398,7 +398,7 @@
 		</data>
 		<key>Resources/lib/python39.zip</key>
 		<data>
-		QjceKdFNDsAAS0CJnqZM67aKqVg=
+		vo/w0h5SuetcZkJL+wKPXhWmV8o=
 		</data>
 		<key>Resources/openssl.ca/cert.pem</key>
 		<data>
@@ -406,7 +406,7 @@
 		</data>
 		<key>Resources/site.pyc</key>
 		<data>
-		b1iTw2q2VZTaXb5W5yJc8JLygzY=
+		gL/JZ7SuD/mH/rIOrpM/yFEEJjc=
 		</data>
 		<key>Resources/zlib.cpython-39-darwin.so</key>
 		<data>
@@ -459,22 +459,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lV6TcYINjqud2oWJtlGXWN+DPWc=
+			zBemijg4bPDVzAm3pnmn+I6rtD4=
 			</data>
 			<key>hash2</key>
 			<data>
-			3EwR8Sx4/yq6MkEkLsHI8ZnVBM+myhQradDQsl4GSZE=
+			sQECGWUjFbDsDtZDIt4Re6q+Jr+7ni46vRBZOSwcgcA=
 			</data>
 		</dict>
 		<key>Resources/icon.icns</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			l6CHKUCTdj7ou31kRdLJQ0vkths=
+			Qb1aN1LT4LODn9d546gHztSdKN4=
 			</data>
 			<key>hash2</key>
 			<data>
-			eIZun3TTlsLh4VLJYugtl2uENJWu7xAJpGD7rMf7zXA=
+			n8sAsCSt/oOxDImJLM2fqVsERTAcvGQgHs9m3GmJRQI=
 			</data>
 		</dict>
 		<key>Resources/include/Headers/pyconfig.h</key>
@@ -1520,11 +1520,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			QjceKdFNDsAAS0CJnqZM67aKqVg=
+			vo/w0h5SuetcZkJL+wKPXhWmV8o=
 			</data>
 			<key>hash2</key>
 			<data>
-			4EkwHRfFis9wC6nXPaoOnZbcWt7g1r8He5Hnbys54kc=
+			f/nNJGreknZ8B9ro8w0mZ0skYikMCGZHge7u3Lc1PEY=
 			</data>
 		</dict>
 		<key>Resources/openssl.ca/cert.pem</key>
@@ -1542,11 +1542,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			b1iTw2q2VZTaXb5W5yJc8JLygzY=
+			gL/JZ7SuD/mH/rIOrpM/yFEEJjc=
 			</data>
 			<key>hash2</key>
 			<data>
-			3/OAYc8kFDnJ6kROieLSKC+GIiRznaTfh/vcsxMROFA=
+			dImlt81A4O8gyflrG0t8UllC5cDC/VE2OmXUuiM2vpQ=
 			</data>
 		</dict>
 		<key>Resources/zlib.cpython-39-darwin.so</key>
