@@ -68,32 +68,23 @@ def execute_action(action):
 
 def on_move(x, y):
     global middle_button_pressed, start_position, gesture_executed
-    if middle_button_pressed and not gesture_executed:
+    if middle_button_pressed:
         if start_position is None:
             start_position = (x, y)
         else:
             dx = x - start_position[0]
-            dy = y - start_position[1]
-            distance_threshold = 50  # Minimum distance to recognize a gesture
+            volume_change = dx / 5  # Adjust sensitivity as needed
+            current_volume = get_current_volume()
+            new_volume = max(0, min(100, current_volume + volume_change))
+            set_volume(new_volume)
+            start_position = (x, y)
 
-            if abs(dx) > distance_threshold or abs(dy) > distance_threshold:
-                if abs(dx) > abs(dy):
-                    if dx > 0:
-                        gesture = "Right"
-                    else:
-                        gesture = "Left"
-                else:
-                    if dy > 0:
-                        gesture = "Down"
-                    else:
-                        gesture = "Up"
-                
-                # Execute the action for the detected gesture
-                execute_action(gesture)
-                gesture_executed = True  # Mark gesture as executed
-                
-                # Reset start position to avoid repeated triggers
-                start_position = (x, y)
+def get_current_volume():
+    result = subprocess.run(['osascript', '-e', 'output volume of (get volume settings)'], capture_output=True, text=True)
+    return int(result.stdout.strip())
+
+def set_volume(volume):
+    subprocess.run(['osascript', '-e', f'set volume output volume {volume}'], capture_output=True)
 
 def on_click(x, y, button, pressed):
     global middle_button_pressed, start_position, gesture_executed
